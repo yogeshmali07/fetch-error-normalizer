@@ -1,0 +1,58 @@
+{
+  "name": "fetch-error-normalizer",
+  "version": "0.1.0",
+  "description": "Normalize Fetch, Axios, and REST API failures into a predictable typed error.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build:lib": "npm run clean && tsup",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.lib.json --noEmit",
+    "lint": "eslint src test tsup.config.ts",
+    "verify:exports": "node scripts/verify-exports.mjs",
+    "pack:check": "npm pack --dry-run"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.8",
+    "next": "16.3.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwindcss": "^4",
+    "tsup": "^8.5.0",
+    "typescript": "^5",
+    "vitest": "^3.2.0"
+  }
+}
